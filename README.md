@@ -8,7 +8,7 @@ I believe that additional explanation is no needed 😉
 
 On the following gif you can see how to use it -> let's check it out 😎
 
-![How to use](https://github.com/Kantares77/currency-converter/blob/main/Currency-Conventer_howToUse.gif)
+![How to use](Currency-Conventer_howToUse.gif)
 
 ## Technologies
 
