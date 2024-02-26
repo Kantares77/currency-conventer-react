@@ -10,6 +10,10 @@ On the following gif you can see how to use it -> let's check it out 😎
 
 ![How to use](Currency-Conventer_howToUse.gif)
 
+## Calculation form you can find under the following link:
+
+[currency conventer](https://kantares77.github.io/currency-conventer-react/)
+
 ## Technologies
 
 - HTML
@@ -23,7 +27,3 @@ On the following gif you can see how to use it -> let's check it out 😎
 - JavaScript
 
 - React
-
-## Calculation form you can find under the following link:
-
-[currency conventer](https://kantares77.github.io/currency-conventer-react/)
