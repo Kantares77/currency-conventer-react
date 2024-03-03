@@ -6,6 +6,10 @@
     color: black;
 }
 
+.form__result {
+    height: 90px;      
+}
+
 .form__field {
     border: 1px solid;
     padding: 10px;

@@ -70,10 +70,10 @@ export const Form = () => {
                     </label>
                 </p>
             </fieldset>
-            <p>
+            <div className="form__result">
                 <button className="form__button">Calculate</button>
-            </p>
-            <Result result={result} />
+                <Result result={result} />
+            </div>
         </form>
     );
 };
