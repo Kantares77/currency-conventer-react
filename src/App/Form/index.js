@@ -16,7 +16,7 @@ export const Form = () => {
             calculatedAmount: amount / rate,
             currency,
         });
-    }
+    };
 
     const onFormSubmit = (event) => {
         event.preventDefault();
