@@ -1,7 +1,8 @@
-import "./style.css";
+import { ViewResult } from "./styled";
+import React from "react";
 
 export const Result = ({ result }) => (
-    <p className="result">
+    <ViewResult>
         {!!result && (
             <>
                 {result.enteredAmount.toFixed(2)}&nbsp;PLN&nbsp;=
@@ -11,5 +12,5 @@ export const Result = ({ result }) => (
                 </strong>
             </>
         )}
-    </p>
+    </ViewResult>
 );

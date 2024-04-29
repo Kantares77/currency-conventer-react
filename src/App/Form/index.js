@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { currencies } from "../currencies";
 import { Result } from "./Result";
-import "./style.css";
+import React from "react";
+import { StyledButton, StyledField, StyledFieldset, StyledForm, StyledLegend, StyledResult, StyledText } from "./styled";
 
 export const Form = () => {
     const [amount, setAmount] = useState("");
@@ -24,19 +25,18 @@ export const Form = () => {
     };
 
     return (
-        <form className="form" onSubmit={onFormSubmit}>
-            <fieldset className="form__fieldset">
+        <StyledForm onSubmit={onFormSubmit}>
+            <StyledFieldset>
                 <p>Required field is marked *</p>
-                <legend className="form__legend">Currency converter</legend>
+                <StyledLegend>Currency converter</StyledLegend>
                 <p>
                     <label>
-                        <span className="form__labelText">
+                        <StyledText>
                             Enter amount in PLN*:
-                        </span>
-                        <input
+                        </StyledText>
+                        <StyledField
                             value={amount}
                             onChange={({ target }) => setAmount(target.value)}
-                            className="form__field"
                             type="number"
                             min="1"
                             step="any"
@@ -48,13 +48,12 @@ export const Form = () => {
                 </p>
                 <p>
                     <label>
-                        <span className="form__labelText">
+                        <StyledText>
                             Select currency:
-                        </span>
-                        <select
+                        </StyledText>
+                        <StyledField as="select"
                             value={currency}
                             onChange={({ target }) => setCurrency(target.value)}
-                            className="form__field"
                             required
                             name="selectedCurrency"
                         >
@@ -66,14 +65,14 @@ export const Form = () => {
                                     {currency.name}
                                 </option>
                             )))}
-                        </select>
+                        </StyledField>
                     </label>
                 </p>
-            </fieldset>
-            <div className="form__result">
-                <button className="form__button">Calculate</button>
+            </StyledFieldset>
+            <StyledResult>
+                <StyledButton>Calculate</StyledButton>
                 <Result result={result} />
-            </div>
-        </form>
+            </StyledResult>
+        </StyledForm>
     );
 };
