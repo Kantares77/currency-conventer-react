@@ -51,7 +51,8 @@ export const Form = () => {
                         <StyledText>
                             Select currency:
                         </StyledText>
-                        <StyledField as="select"
+                        <StyledField
+                            as="select"
                             value={currency}
                             onChange={({ target }) => setCurrency(target.value)}
                             required

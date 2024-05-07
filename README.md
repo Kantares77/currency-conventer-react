@@ -27,3 +27,7 @@ On the following gif you can see how to use it -> let's check it out 😎
 - JavaScript
 
 - React
+
+- Custom Hooks
+
+- Styled Components
