@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-export const StyledClock = styled.p`
+export const StyledClock = styled.div`
     color: ${({ theme }) => theme.colors.tundora};
     text-align: right;
     font-size: 10px;

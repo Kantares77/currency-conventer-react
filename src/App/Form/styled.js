@@ -1,9 +1,22 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-export const StyledForm = styled.form`
+export const Fieldset = styled.fieldset`
+    border: 1px solid ${({ theme }) => theme.colors.gray};
+    padding: 20px;
+    border-radius: 5px;
+    margin: 20px 0px;
+    box-shadow: 1px 2px 5px;
+    color: ${({ theme }) => theme.colors.gray};
 `;
 
-export const StyledText = styled.span`
+export const Legend = styled.legend`
+    background-color: ${({ theme }) => theme.colors.tundora};
+    color: ${({ theme }) => theme.colors.white}; 
+    border-radius: 5px;
+    padding: 10px;
+`;
+
+export const LabelText = styled.span`
     width: 100%;
     max-width: 200px;
     display: inline-block;
@@ -15,7 +28,7 @@ export const StyledResult = styled.div`
     height: 90px;
 `;
 
-export const StyledField = styled.input`
+export const Field = styled.input`
     border: 1px solid;
     padding: 10px;
     width: 100%;
@@ -24,9 +37,9 @@ export const StyledField = styled.input`
     box-shadow: 1px 2px 5px;
     color: ${({ theme }) => theme.colors.tundora};
 
-    &:invalid {
+    ${({ invalid }) => invalid && css`
         background-color: ${({ theme }) => theme.colors.coffee};
-    }
+    `}
 `;
 
 export const StyledButton = styled.button`
@@ -48,18 +61,16 @@ export const StyledButton = styled.button`
     }
 `;
 
-export const StyledFieldset = styled.fieldset`
-    border: 1px solid ${({ theme }) => theme.colors.gray};
-    padding: 20px;
-    border-radius: 5px;
-    margin: 20px 0px;
-    box-shadow: 1px 2px 5px;
-    color: ${({ theme }) => theme.colors.gray};
+export const Info = styled.p`
+    color: ${({ theme }) => theme.colors.tundora};
+    text-align: center;
+    font-size: 10px;
 `;
 
-export const StyledLegend = styled.legend`
-    background-color: ${({ theme }) => theme.colors.tundora};
-    color: ${({ theme }) => theme.colors.white}; 
-    border-radius: 5px;
-    padding: 10px;
+export const Loading = styled.p`
+    color: ${({ theme }) => theme.colors.blue};
+`;
+
+export const Failure = styled.p`
+    color: ${({ theme }) => theme.colors.red};
 `;
