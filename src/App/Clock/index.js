@@ -2,24 +2,24 @@ import { useCurrentDate } from "./useCurrentDate";
 import { StyledClock } from "./styled";
 import React from "react";
 
+const formatDate = (date) => date.toLocaleString(undefined, {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+    second: "numeric",
+});
+
 export const Clock = () => {
     const date = useCurrentDate();
-
-    const dateFormat = (date) => date.toLocaleString(undefined, {
-        weekday: "long",
-        day: "numeric",
-        month: "long",
-        year: "numeric",
-        hour: "numeric",
-        minute: "numeric",
-        second: "numeric",
-    });
 
     return (
         <StyledClock>
             Dzisiaj jest:
             {" "}
-            {dateFormat(date)}
+            {formatDate(date)}
         </StyledClock>
     );
 };
