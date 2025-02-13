@@ -34,13 +34,13 @@ export const Form = () => {
                 {ratesData.status === "loading"
                     ? (
                         <Loading>
-                            Chwilunia...<br />Właśnie ładuję kursy walut z publicznego API
+                            Wait a minute...<br />There is just loading currency rates from public API
                         </Loading>
                     )
                     : (
                         ratesData.status === "error" ? (
                             <Failure>
-                                Upsss...Coś spowodowało problem. Sprawdź swoje połączenie z internetem
+                                Oops...Something went wrong. Check your internet connection
                             </Failure>
                         ) : (
                             <>
@@ -93,7 +93,7 @@ export const Form = () => {
             <StyledResult>
                 <StyledButton>Calculate</StyledButton>
                 <Info>
-                    Kursy pochodzą z CurrencyAPI z aktualizacją na dzień: <strong>{ratesData.date}</strong>
+                    Currency rates are coming from CurrencyAPI. Updated on: <strong>{ratesData.date}</strong>
                 </Info>
                 <Result result={result} />
             </StyledResult>
