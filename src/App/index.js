@@ -1,14 +1,14 @@
 import { Form } from "./Form";
 import { Clock } from "./Clock";
 import React from "react";
-import { Container } from "./styled";
+import { Wrapper } from "./styled";
 
 function App() {
     return (
-        <Container>
+        <Wrapper>
             <Clock />
             <Form />
-        </Container>
+        </Wrapper>
     );
 }
 
