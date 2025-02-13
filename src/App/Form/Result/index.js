@@ -1,16 +1,16 @@
-import { ViewResult } from "./styled";
+import { StyledResult } from "./styled";
 import React from "react";
 
 export const Result = ({ result }) => (
-    <ViewResult>
+    <StyledResult>
         {!!result && (
             <>
-                {result.enteredAmount.toFixed(2)}&nbsp;PLN&nbsp;=
+                {result.sourceAmount.toFixed(2)}&nbsp;PLN&nbsp;=
                 {" "}
                 <strong>
                     {result.calculatedAmount.toFixed(2)}&nbsp;{result.currency}
                 </strong>
             </>
         )}
-    </ViewResult>
+    </StyledResult>
 );
