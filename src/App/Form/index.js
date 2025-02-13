@@ -1,79 +1,103 @@
 import { useState } from "react";
-import { currencies } from "../currencies";
 import { Result } from "./Result";
 import React from "react";
-import { StyledButton, StyledField, StyledFieldset, StyledForm, StyledLegend, StyledResult, StyledText } from "./styled";
+import { Field, Fieldset, LabelText, Legend, StyledButton, Info, Loading, Failure, StyledResult } from "./styled";
+import { useRatesData } from "./useRatesData";
 
 export const Form = () => {
-    const [amount, setAmount] = useState("");
-    const [currency, setCurrency] = useState(currencies[0].short);
     const [result, setResult] = useState();
+    const ratesData = useRatesData();
 
     const calculateResult = (currency, amount) => {
-        const rate = currencies.find(({ short }) => short === currency).rate;
+        const rate = ratesData.rates[currency];
 
         setResult({
-            enteredAmount: +amount,
-            calculatedAmount: amount / rate,
+            sourceAmount: +amount,
+            calculatedAmount: amount * rate,
             currency,
         });
     };
 
+    const [amount, setAmount] = useState("");
+    const [currency, setCurrency] = useState("EUR");
+
     const onFormSubmit = (event) => {
         event.preventDefault();
-        calculateResult(currency, amount);
+        calculateResult(amount, currency);
     };
 
     return (
-        <StyledForm onSubmit={onFormSubmit}>
-            <StyledFieldset>
+        <form onSubmit={onFormSubmit}>
+            <Fieldset>
                 <p>Required field is marked *</p>
-                <StyledLegend>Currency converter</StyledLegend>
-                <p>
-                    <label>
-                        <StyledText>
-                            Enter amount in PLN*:
-                        </StyledText>
-                        <StyledField
-                            value={amount}
-                            onChange={({ target }) => setAmount(target.value)}
-                            type="number"
-                            min="1"
-                            step="any"
-                            required
-                            placeholder="Enter amount"
-                            name="enteredAmount"
-                        />
-                    </label>
-                </p>
-                <p>
-                    <label>
-                        <StyledText>
-                            Select currency:
-                        </StyledText>
-                        <StyledField
-                            as="select"
-                            value={currency}
-                            onChange={({ target }) => setCurrency(target.value)}
-                            required
-                            name="selectedCurrency"
-                        >
-                            {currencies.map((currency => (
-                                <option
-                                    key={currency.short}
-                                    value={currency.short}
-                                >
-                                    {currency.name}
-                                </option>
-                            )))}
-                        </StyledField>
-                    </label>
-                </p>
-            </StyledFieldset>
+                <Legend>Currency converter</Legend>
+                {ratesData.status === "loading"
+                    ? (
+                        <Loading>
+                            Chwilunia...<br />Właśnie ładuję kursy walut z Europejskiego Banku Centrlanego
+                        </Loading>
+                    )
+                    : (
+                        ratesData.status === "error" ? (
+                            <Failure>
+                                Upsss...Coś spowodowało problem. Sprawdź swoje połączenie z internetem
+                            </Failure>
+                        ) : (
+                            <>
+                                <p>
+                                    <label>
+                                        <LabelText>
+                                            Enter amount in PLN*:
+                                        </LabelText>
+                                        <Field
+                                            value={amount}
+                                            onChange={({ target }) => setAmount(target.value)}
+                                            type="number"
+                                            min="1"
+                                            step="any"
+                                            required
+                                            placeholder="Enter amount"
+                                            name="enteredAmount"
+                                        />
+                                    </label>
+                                </p>
+                                <p>
+                                    <label>
+                                        <LabelText>
+                                            Select currency:
+                                        </LabelText>
+                                        <Field
+                                            as="select"
+                                            value={currency}
+                                            onChange={({ target }) => setCurrency(target.value)}
+                                            required
+                                            name="selectedCurrency"
+                                        >
+                                            {Object.keys(ratesData.rates.data).map(((rates) => (
+                                                <option
+                                                    key={rates}
+                                                    value={rates}
+                                                >
+                                                    {rates}
+                                                </option>
+                                            )))}
+                                        </Field>
+                                    </label>
+                                </p>
+                            </>
+                        )
+                    )
+                }
+
+            </Fieldset>
             <StyledResult>
                 <StyledButton>Calculate</StyledButton>
+                <Info>
+                    Kursy pochodzą z CurrencyAPI z aktualizacją na dzień: <strong>{ratesData.date}</strong>
+                </Info>
                 <Result result={result} />
             </StyledResult>
-        </StyledForm>
+        </form>
     );
 };
+
