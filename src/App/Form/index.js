@@ -34,7 +34,7 @@ export const Form = () => {
                 {ratesData.status === "loading"
                     ? (
                         <Loading>
-                            Chwilunia...<br />Właśnie ładuję kursy walut z Europejskiego Banku Centrlanego
+                            Chwilunia...<br />Właśnie ładuję kursy walut z publicznego API
                         </Loading>
                     )
                     : (
@@ -47,7 +47,7 @@ export const Form = () => {
                                 <p>
                                     <label>
                                         <LabelText>
-                                            Enter amount in PLN*:
+                                            Amount in PLN*:
                                         </LabelText>
                                         <Field
                                             value={amount}
