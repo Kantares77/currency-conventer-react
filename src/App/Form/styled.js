@@ -7,6 +7,7 @@ export const Fieldset = styled.fieldset`
     margin: 20px 0px;
     box-shadow: 1px 2px 5px;
     color: ${({ theme }) => theme.colors.gray};
+    position: relative;
 `;
 
 export const Legend = styled.legend`
@@ -67,10 +68,10 @@ export const Info = styled.p`
     font-size: 10px;
 `;
 
-export const Loading = styled.p`
-    color: ${({ theme }) => theme.colors.blue};
-`;
+// export const Loading = styled.p`
+//     color: ${({ theme }) => theme.colors.blue};
+// `;
 
-export const Failure = styled.p`
-    color: ${({ theme }) => theme.colors.red};
-`;
+// export const Failure = styled.p`
+//     color: ${({ theme }) => theme.colors.red};
+// `;
