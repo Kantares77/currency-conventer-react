@@ -8,7 +8,7 @@ export const Loading = () => {
         <div>
             <>
                 <LoadingText>
-                    Wait a minute...<br />There are just loading currency rates from public API
+                    Wait a minute...⏱<br />There are just loading currency rates from public API
                 </LoadingText>
                 <StyledGif src={loadingGif} alt="alternative text" />
             </>

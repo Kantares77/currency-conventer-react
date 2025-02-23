@@ -8,7 +8,7 @@ export const Failure = () => {
         <div>
             <>
                 <LoadingText>
-                    Oops...<br />Something went wrong...Please check your internet connection
+                    Oops...<br />Something went wrong...🤷‍♂️ Please check your internet connection
                 </LoadingText>
                 <StyledGif src={loadingGif} alt="alternative text" />
             </>
